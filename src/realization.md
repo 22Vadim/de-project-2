@@ -82,7 +82,8 @@ LEFT JOIN shipping_transfer st ON s.shipping_transfer_description = st.transfer_
 	AND s.shipping_transfer_rate = st.shipping_transfer_rate
 LEFT JOIN shipping_country_rates scr ON s.shipping_country = scr.shipping_country
 	AND s.shipping_country_base_rate = scr.shipping_country_base_rate
-LEFT JOIN shipping_agreement sa ON s.vendor_agreement_description = sa.agreementid || ':' ||  sa.agreement_number || ':' || sa.agreement_rate :: numeric (14,2) || ':' || sa.agreement_commission :: numeric (14,2)
+LEFT JOIN shipping_agreement sa ON s.vendor_agreement_description = sa.agreementid || ':' ||  sa.agreement_number || ':' || 
+	sa.agreement_rate :: numeric (14,2) || ':' || sa.agreement_commission :: numeric (14,2)
 ORDER BY 1;
 ```
 
