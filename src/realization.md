@@ -75,7 +75,8 @@ FOREIGN KEY (shipping_country_id) REFERENCES shipping_country_rates(shipping_cou
 FOREIGN KEY (agreementid) REFERENCES shipping_agreement(agreementid) ON UPDATE CASCADE
 );
 INSERT INTO shipping_info
-SELECT distinct(s.shippingid), s.vendorid, s.payment_amount , s.shipping_plan_datetime , st.transfer_type_id, scr.shipping_country_id, sa.agreementid
+SELECT distinct(s.shippingid), s.vendorid, s.payment_amount , s.shipping_plan_datetime , st.transfer_type_id, 
+	scr.shipping_country_id, sa.agreementid
 FROM shipping s
 LEFT JOIN shipping_transfer st ON s.shipping_transfer_description = st.transfer_type || ':' || st.transfer_model
 	AND s.shipping_transfer_rate = st.shipping_transfer_rate
